@@ -1,0 +1,10 @@
+create table USER(id int primary key auto_increment, name varchar(50), email varchar(30) not null , password varchar(20) not null, phoneno varchar(15), createdtim TIMESTAMP);
+
+create table BLOG (id int primary key auto_increment, title varchar(20), contents varchar(30), createdtime TIMESTAMP, userid int, categoryid int);
+
+create table CATEGORY (id int primary key auto_increment, title
+varchar(30), description varchar(50));
+
+alter table BLOG  add foreign key(userid) references USER(id);
+
+alter table BLOG  add foreign key(categoryid) references CATEGORY(id);
