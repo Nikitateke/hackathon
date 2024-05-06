@@ -10,13 +10,14 @@ const mail = require('../mail')
 
 router.post('/login',(request,response)=>{
     debugger;
+    const a =[];
     const statement = `select id,name from USER where password = ? and email = ?;`
     const {password,email} = request.body
     const encPassword = String(crypto.SHA256(password))
      
     db.pool.execute(statement,[encPassword,email],(error,result)=>{        
-       if(result){
-        
+       if(result.length>0){
+        console.log(result)
         const payload  ={id: result[0].id} 
         const token = jwt.sign(payload,secret.secret)
         const userdata = {
@@ -32,6 +33,7 @@ router.post('/login',(request,response)=>{
 })
 
 router.post('/register',(request,response)=>{
+    console.log("body:",request.body)
     const statement = `insert into USER(name, email,password,phoneno) values(?,?,?,?);`
     const {name,email,password, phoneno} = request.body
     const encPassword = String(crypto.SHA256(password))

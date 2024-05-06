@@ -19,6 +19,7 @@ function Categorylist() {
     }
 
     useEffect(() => {
+        
         getcategories()
       }, [])
 

@@ -6,7 +6,13 @@ import { useEffect } from "react";
 
 
 function Home(){
-    
+   let a =0;
+useEffect(()=>{
+   if(a=0){
+      a++;
+      window.location.reload();
+   }
+})
 const navigate = useNavigate()
 
  const logout = ()=>{
@@ -25,8 +31,8 @@ const name = sessionStorage.getItem('name')
 
         <div style={{fontSize:'20px'}} >  Welcome, {name}  </div><br />
             <Link to='/newblog' className="btn btn-primary mb-3 mt-1">New Blog</Link><br />
-            <Link className="btn btn-primary mb-3 mt-1">All Blog</Link><br />
-            <Link className="btn btn-primary mb-3 mt-1">My Blog</Link><br />
+            <Link to='/allblog' className="btn btn-primary mb-3 mt-1">All Blog</Link><br />
+            <Link to='/myblog' className="btn btn-primary mb-3 mt-1">My Blog</Link><br />
             <Link className="btn btn-primary mb-3 mt-1">Find Blog</Link><br />
             <Link to='/category' className="btn btn-primary mb-3 mt-1">Categories</Link><br />
             <button onClick={logout} className="btn btn-danger mb-3 mt-5">Sign Out</button><br/>

@@ -25,7 +25,8 @@ const [phoneno, setPhoneno] = useState('')
         }
         const response = await axios.post('http://localhost:4000/user/register',body)
         const result = response.data
-        console.log(response)
+
+        console.log(body)
         if(result['status'] == 'success'){
             toast.success('You have Registered Successfully')
             navigate('/login')

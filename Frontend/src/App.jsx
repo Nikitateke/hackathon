@@ -8,6 +8,8 @@ import Login from './Components/login';
 import Home from './Components/home';
 import Categorylist from './page/Categorylist';
 import Addblog from './page/Addblogs';
+import AllBlog from './page/Allblog';
+import MyBlog from './page/Myblogs';
 
 
 
@@ -24,12 +26,14 @@ function App() {
         </div>
         
         <div className='col-6'>
-        <Routes>
+        <Routes>.
         <Route path='/' element={<Login/>}></Route>
         <Route path='/register' element={<RegisterForm/>}/>
         <Route path='/login' element = {<Login/>}/>
         <Route path='/category' element={<Categorylist/>}></Route> 
         <Route path='/newblog' element={<Addblog/>}></Route>         
+        <Route path='/allblog' element={<AllBlog />}></Route>         
+        <Route path='/myblog' element={<MyBlog />}></Route>         
       </Routes>
         </div>
       </div> 

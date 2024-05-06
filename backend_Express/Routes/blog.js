@@ -17,6 +17,34 @@ router.post('/addblog',(request,response)=>{
     })
 })
 
+router.get('/allblog',(request,response)=>{
+    const statement = "select BLOG.id,BLOG.title,BLOG.createdtime,CATEGORY.title as ctitle,USER.name as uname from BLOG,CATEGORY,USER where BLOG.userid=USER.id and BLOG.categoryid=CATEGORY.id;"
+    
+    db.pool.execute(statement,(error,result)=>{
+        response.send(utils.createResponse(error,result))
+    })
+})
+
+router.get('/myblog',(request,response)=>{
+    
+    const statement = "select BLOG.id,BLOG.title,BLOG.createdtime,CATEGORY.title as ctitle,USER.name as uname from BLOG,CATEGORY,USER where BLOG.userid=USER.id and BLOG.categoryid=CATEGORY.id and USER.id=?;"
+    
+    db.pool.execute(statement,[request.userid],(error,result)=>{
+        response.send(utils.createResponse(error,result))
+    })
+})
+
+router.get('/editbtn',(request,response)=>{
+    
+    
+    const statement = 'select name from USER where id=?;'
+
+    db.pool.execute(statement,[request.userid],(error,result)=>{
+        response.send(utils.createResponse(error,result))
+    })
+
+})
+
 module.exports = router
 
 
